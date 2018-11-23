@@ -19,9 +19,36 @@ window.onload = () => {
   // let message = browser.runtime.sendMessage('send-me-image-data');
 
   // message.then(handleSuccess, handleError);
+  let jsonData;
   browser.storage.local.get("data").then ((data) => {
-    let d = JSON.stringify(data.data, undefined, 2);
+    jsonData = data.data;
+    let d = JSON.stringify(jsonData, undefined, 2);
     console.log("Received Data: " + d );
     document.getElementById('image-data').innerText = d;
   });
 };
+document.getElementById('copyToClipboard').addEventListener('click', ()=>{
+  copyToClipboard();
+});
+document.getElementById('downloadData').addEventListener('click', ()=>{
+  downloadData();
+});
+var copyToClipboard = () => {
+  let str = document.getElementById('image-data').innerText;
+  const el = document.createElement('textarea');
+  el.value = str;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+};
+var downloadData = () => {
+  // when clicked the button
+  var content = document.getElementById('image-data').innerText;
+  // a [save as] dialog will be shown
+  window.open("data:application/txt," + encodeURIComponent(content), "_self");
+}
+
+// for(let obj of data) {
+//   let row = document.createElement('tr');
+// }
