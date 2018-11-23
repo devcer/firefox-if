@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "FxIF",
+  "version": "0.1",
+  "content_scripts": [
+    {
+      "matches": ["file:///home/*"],
+      "js": ["exif.js", "content.js"]
+    }
+  ],
+  "description": "FxIF (Firefox exIF) allows you to view meta information data contained in JPEG images from the convenience of your Firefox browser",
+  "icons": {
+    "48": "icons/icon-48.png",
+    "96": "icons/icon-96.png",
+    "256": "icons/icon.png"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": ["storage", "menus"]
+}

@@ -1,0 +1,10 @@
+div{
+	display: inline-block;
+	padding: 20px 0px; 
+  word-wrap: break-word;
+  width: 100%;
+}
+
+#inner-text {
+  white-space: pre;
+}
