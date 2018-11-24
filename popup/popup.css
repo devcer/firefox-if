@@ -8,3 +8,24 @@ div{
 #inner-text {
   white-space: pre;
 }
+table, th, td {
+    border: solid 1px #DDD;
+    border-collapse: collapse;
+    padding: 2px 3px;
+    text-align: center;
+}
+td:nth-child(2), th:nth-child(2) {
+  word-wrap: break-word;
+  text-align: left;
+}
+th {
+    font-weight:bold;
+}
+
+body {
+  width: 500px
+}
+button {
+  padding: 5px;
+  margin: 5px;
+}

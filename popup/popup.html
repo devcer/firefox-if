@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Popup for Addon boilerplate</title>
-	<link rel="stylesheet" type="text/css" href="popup.css">
+  <title>Popup for Addon boilerplate</title>
+  <link rel="stylesheet" type="text/css" href="popup.css">
 </head>
+
 <body>
-  <div>
-    <p id="table-data"></p>
-    <p id="image-data"></p>
-    <button id="copyToClipboard">Copy to clipboard</button>
-    <button id="downloadData">Download</button>
+  <button id="copy-to-clipboard">Copy JSON to clipboard</button>
+  <button id="download-data">Download as File</button>
+  <!-- Tab links -->
+  <div class="tab">
+    <button class="tablinks" id="show-table">Table Format</button>
+    <button class="tablinks" id="show-json">JSON Format</button>
   </div>
-<script type="text/javascript" src="popup.js"></script>
+  <div id="table-data" class="tabContent">
+    <table>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>value</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+      </tbody>
+    </table>
+  </div>
+  <div id="json-data" class="tabContent">
+    <p id="image-data"></p>
+  </div>
+  <script type="text/javascript" src="popup.js"></script>
 </body>
+
 </html>
