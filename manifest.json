@@ -4,11 +4,11 @@
   "version": "0.1",
   "content_scripts": [
     {
-      "matches": ["file:///home/*"],
+      "matches":  ["<all_urls>"],
       "js": ["exif.js", "content.js"]
     }
   ],
-  "description": "FxIF (Firefox exIF) allows you to view meta information data contained in JPEG images from the convenience of your Firefox browser",
+  "description": "Firefox IF allows you to view meta information data contained in .jpg and .tiff images from your Firefox browser. Most digital cameras add EXIF data to all images you take and much editing software adds or allows you to add more informations on the picture and you the creator.",
   "icons": {
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png",
