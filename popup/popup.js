@@ -1,9 +1,13 @@
 window.onload = () => {
-  let jsonData;
-  browser.storage.local.get('data').then((data) => {
-    jsonData = data.data;
-    let d = JSON.stringify(jsonData, undefined, 2);
-    document.getElementById('image-data').innerText = d;
+  let jsonData, noDataText = 'The selected image does not have any Exif meta-data or The data cannot be read.';
+  browser.storage.local.get('exif-data').then((data) => {
+    jsonData = data['exif-data'];
+    if (Object.keys(jsonData).length === 0 && jsonData.constructor === Object) {
+      document.getElementById('image-data').innerText = noDataText;
+    } else {
+      let d = JSON.stringify(jsonData, undefined, 2);
+      document.getElementById('image-data').innerText = d;
+    }
     fillTableData(jsonData);
     document.getElementById('show-table').click();
   });
@@ -44,15 +48,24 @@ window.onload = () => {
   var fillTableData = (data) => {
     let tableContainer = document.getElementById('table-body');
     tableContainer.innerText = '';
-    for (let obj in data) {
+    if (Object.keys(data).length === 0 && data.constructor === Object) {
       let row = document.createElement('tr'),
-        col1 = document.createElement('td'),
-        col2 = document.createElement('td');
-      col1.innerText = JSON.stringify(obj);
-      col2.innerText = JSON.stringify(data[obj]);
+        col1 = document.createElement('td');
+      col1.colSpan = 2;
+      col1.innerText = noDataText;
       row.appendChild(col1);
-      row.appendChild(col2);
       tableContainer.appendChild(row);
+    } else {
+      for (let obj in data) {
+        let row = document.createElement('tr'),
+          col1 = document.createElement('td'),
+          col2 = document.createElement('td');
+        col1.innerText = JSON.stringify(obj);
+        col2.innerText = JSON.stringify(data[obj]);
+        row.appendChild(col1);
+        row.appendChild(col2);
+        tableContainer.appendChild(row);
+      }
     }
   }
 };

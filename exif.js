@@ -1,4 +1,3 @@
-console.log('exif.js loaded');
 (function() {
 
     var debug = false;

@@ -1,13 +1,9 @@
-let openWindowWithMetaData = (data) => {
-  console.log('openWindowWithMetaData');
+let openWindowWithMetaData = () => {
   browser.windows.create({
     url: ['popup/popup.html'],
     height: 500,
     width: 500,
     type: 'popup'
-  });
-  browser.storage.local.get("data").then ((data) => {
-    console.log("Received Data: "+ data);
   });
 };
 
